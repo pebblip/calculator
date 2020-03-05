@@ -9,6 +9,6 @@ class Add implements Command
 {
     public function execute(Environment $environment): void
     {
-        $environment->setCurrentVal($environment->getCurrentVal() + $environment->getOprand(1));
+        $environment->setCurrentVal($environment->getCurrentVal() + $environment->getOprand(0));
     }
 }

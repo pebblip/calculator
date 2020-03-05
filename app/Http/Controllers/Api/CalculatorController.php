@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 use pebblip\domain\Calculator;
 use pebblip\domain\CommandFactory;
 use pebblip\domain\EnvironmentRepository;
-use const Grpc\STATUS_OK;
 
 class CalculatorController extends Controller
 {
-    public function index(Request $request, Calculator $calculator, EnvironmentRepository $environmentRepository) {
+    public function index(Request $request, Calculator $calculator, EnvironmentRepository $environmentRepository)
+    {
         $commandLine = $request->get('command_line');
         $commands = preg_split('/\s+/', $commandLine);
         $environment = $environmentRepository->get();
-        $environment->setOprands($commands);
+        $environment->setOprands(array_slice($commands, 1));
 
         try {
             $command = CommandFactory::create($commands[0]);
@@ -27,7 +27,7 @@ class CalculatorController extends Controller
             ]);
         } catch (\Exception $e) {
             return response()->json([
-                    'val' => $e->getMessage()
+                'val' => $e->getMessage()
             ], 400);
         }
     }

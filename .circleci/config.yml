@@ -31,9 +31,6 @@ jobs:
           name: unit test
           command: ./vendor/bin/phpunit
 
-  deploy:
-
-
 workflows:
   version: 2.1
   build_and_test:
