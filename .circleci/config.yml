@@ -14,8 +14,8 @@ jobs:
           key: composer-v1-{{ checksum "composer.lock" }}
           paths: vendor
       - run:
-          name: ralavel key generate
-          command: php artisan key:generate
+          name: ralavel key generate for test env
+          command: php artisan key:generate --env=testing
       - persist_to_workspace:
           root: .
           paths: .
