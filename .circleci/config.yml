@@ -6,12 +6,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: composer-v1-{{ checksum "composer-lock.json" }}
+          key: composer-v1-{{ checksum "composer.lock" }}
       - run:
           name: composer instlal
           command: composer install
       - save_cache:
-          key: composer-v1-{{ checksum "composer-lock.json" }}
+          key: composer-v1-{{ checksum "composer.lock" }}
       - run:
           name: ralavel key generate
           command: php artisan key:generateph
