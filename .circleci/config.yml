@@ -13,9 +13,6 @@ jobs:
       - save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
           paths: vendor
-      - run:
-          name: ralavel key generate for test env
-          command: php artisan key:generate --env=testing
       - persist_to_workspace:
           root: .
           paths: .
@@ -28,8 +25,14 @@ jobs:
       - attach_workspace:
           at: .
       - run:
+          name: ralavel key generate for test env
+          command: php artisan key:generate --env=testing
+      - run:
           name: unit test
           command: ./vendor/bin/phpunit
+
+  deploy:
+
 
 workflows:
   version: 2.1
