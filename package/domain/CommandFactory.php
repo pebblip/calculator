@@ -13,7 +13,7 @@ class CommandFactory
 {
     public static function create(string $command): Command
     {
-        $command = strtolower($command);
+        $command = strtoupper($command);
         switch ($command) {
             case 'ADD' :
                 return new Add();

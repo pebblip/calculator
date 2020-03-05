@@ -10,7 +10,7 @@ use pebblip\domain\EnvironmentRepository;
 
 class CalculatorController extends Controller
 {
-    public function index(Request $request, Calculator $calculator, EnvironmentRepository $environmentRepository)
+    public function index(Request $request, EnvironmentRepository $environmentRepository)
     {
         $commandLine = $request->get('command_line');
         $commands = preg_split('/\s+/', $commandLine);
