@@ -12,6 +12,7 @@ jobs:
           command: composer install
       - save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
+          paths: vendor
       - run:
           name: ralavel key generate
           command: php artisan key:generateph
