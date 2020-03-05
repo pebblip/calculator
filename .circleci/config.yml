@@ -5,9 +5,16 @@ jobs:
       - image: circleci/php:7.4-cli-node
     steps:
       - checkout
+      - restore_cache:
+          key: composer-v1-{{ checksum "composer-lock.json" }}
       - run:
           name: composer instlal
           command: composer install
+      - save_cache:
+          key: composer-v1-{{ checksum "composer-lock.json" }}
+      - run:
+          name: ralavel key generate
+          command: php artisan key:generateph
       - persist_to_workspace:
           root: .
           paths: .
