@@ -17,11 +17,11 @@ jobs:
       - image: circleci/php:7.4-cli-node
     steps:
       - checkout
+      - attach_workspace:
+          at: .
       - run:
           name: unit test
           command: ./vendor/bin/phpunit
-      - attach_workspace:
-          at: .
 
 workflows:
   version: 2.1
