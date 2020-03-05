@@ -9,7 +9,7 @@ jobs:
           name: composer instlal
           command: composer install
       - persist_to_workspace:
-          root: workspace
+          root: .
           paths: .
 
   test:
@@ -21,7 +21,7 @@ jobs:
           name: unit test
           command: ./vendor/bin/phpunit
       - attach_workspace:
-          at: workspace
+          at: .
 
 workflows:
   version: 2.1
