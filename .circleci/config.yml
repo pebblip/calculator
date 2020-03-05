@@ -15,7 +15,7 @@ jobs:
           paths: vendor
       - run:
           name: ralavel key generate
-          command: php artisan key:generateph
+          command: php artisan key:generate
       - persist_to_workspace:
           root: .
           paths: .
