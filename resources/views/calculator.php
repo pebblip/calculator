@@ -56,7 +56,8 @@
             height: 3rem;
             font-size: 2.5rem;
             padding-left: 2rem;
-            width: calc(100% - 2rem);
+            box-sizing: border-box;
+            width: 100%;
         }
 
     </style>
